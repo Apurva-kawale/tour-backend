@@ -2,9 +2,21 @@ const express = require("express");
 var app = express();
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+var routes = require('./routes/welcome');
+var login = require('./routes/login');
+var home = require('./routes/home');
+const path = require('path');
+var http = require('http');
+var server = http.createServer(app);
 
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use('/', routes);
+app.use('/login', login);
+app.use('/home', home);
+
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, 'views'));
 
 
 mongoose.connect("mongodb+srv://apurva1:Mongo@123@cluster0.qo1kt.mongodb.net/notesDB?retryWrites=true&w=majority", { useNewUrlParser: true }, (err) => {
@@ -23,6 +35,7 @@ const userSchema = {
 
 const userDetails = mongoose.model("userDetails", userSchema);
 
+
 app.post("/", function(req, res) {
     let newNote = userDetails({
         firstName: req.body.firstName,
@@ -30,18 +43,16 @@ app.post("/", function(req, res) {
         email: req.body.email
     });
     newNote.save();
-    res.redirect('/');
+    res.redirect('/home');
 
 
 });
 
 app.get("/", function(req, res) {
-    res.sendFile(__dirname + "/views/home.html")
+    res.sendFile(__dirname + "/views/login")
 });
 
-app.get("/views/home", function(req, res) {
-    res.sendFile(__dirname + "/views/index")
-});
+
 
 
 
@@ -50,3 +61,5 @@ app.get("/views/home", function(req, res) {
 app.listen(4000, function() {
     console.log("Server is running");
 });
+
+module.exports = app;

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+        body {
+            background-image: linear-gradient(to bottom right, rgb(10, 205, 165, 0.4), rgb(10, 205, 165));
+            background-repeat: space;
+        }
+        
+        #firstDiv {
+            margin-top: 2em;
+            margin-left: auto;
+            margin-right: auto;
+            background-origin: padding-box;
+            height: auto;
+            width: 100%;
+        }
+        
+        #register {
+            margin-bottom: 8em;
+            margin-top: 0.6em;
+            padding: 14px 40px;
+            font-size: 1.5em;
+            font-family: sans-serif;
+        }
+        
+        h1 {
+            padding-top: 1em;
+            padding-bottom: 1em;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+            color: rgb(41, 21, 114);
+            text-shadow: brown;
+            font-size: 5em;
+            text-decoration: crimson;
+        }
+        
+        label {
+            font-size: x-large;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container px-5 py-24 mx-auto flex">
+        <div class="lg:w-1/3 md:w-1/2 bg-white rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0 relative z-10 shadow-md">
+            <h1 align="center">Tell us about
+                <%= name%>
+            </h1>
+            <form class="container" method="POST" action="/" autocomplete="off">
+                <div class="form-group">
+                    <label>First Name</label>
+                    <input class="form-control" name="firstName">
+                </div>
+                <div class="form-group">
+                    <label>Last Name</label>
+                    <input class="form-control" name="lastName">
+                    </textarea>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input class="form-control" name="email">
+                    </textarea>
+                </div>
+
+                <div>
+                    <button id="register" type="button" class="btn btn-success">Register</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
